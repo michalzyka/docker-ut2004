@@ -22,6 +22,8 @@ ENV UT2004_DOWNLOAD_URL http://gameservermanagers.com/files/ut2004/dedicatedserv
 ENV UT2004_DOWNLOAD_SHA1 e1eda562d99e66a7e5972f05bbf0de8733bf60c9
 ENV UT2004_PATCH_DOWNLOAD_URL http://gameservermanagers.com/files/ut2004/ut2004-lnxpatch3369-2.tar.bz2
 ENV UT2004_PATCH_DOWNLOAD_SHA1 a8cc33877a02a0a09c288b5fc248efde282f7bdf
+ENV ADMIN_NAME admin
+ENV ADMIN_PASSWORD admin1
 
 RUN buildDeps='curl bzip2 unzip' \
         && set -x \
