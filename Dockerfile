@@ -24,6 +24,7 @@ ENV UT2004_PATCH_DOWNLOAD_URL http://gameservermanagers.com/files/ut2004/ut2004-
 ENV UT2004_PATCH_DOWNLOAD_SHA1 a8cc33877a02a0a09c288b5fc248efde282f7bdf
 ENV ADMIN_NAME admin
 ENV ADMIN_PASSWORD admin1
+ENV TERM xterm
 
 RUN buildDeps='curl bzip2 unzip' \
         && set -x \
