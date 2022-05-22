@@ -22,6 +22,8 @@ ENV UT2004_DOWNLOAD_URL http://gameservermanagers.com/files/ut2004/dedicatedserv
 ENV UT2004_DOWNLOAD_SHA1 e1eda562d99e66a7e5972f05bbf0de8733bf60c9
 ENV UT2004_PATCH_DOWNLOAD_URL http://gameservermanagers.com/files/ut2004/ut2004-lnxpatch3369-2.tar.bz2
 ENV UT2004_PATCH_DOWNLOAD_SHA1 a8cc33877a02a0a09c288b5fc248efde282f7bdf
+ENV UTCOMP_DOWNLOAD_URL https://github.com/Deaod/UTComp/releases/download/1.8b/UTCompv18b.zip
+ENV UTCOMP_DOWNLOAD_SHA1 d3a3a180f45851dc08eb8bb58b60ce1e395128a8
 ENV ADMIN_NAME admin
 ENV ADMIN_PASSWORD admin1
 ENV TERM xterm
@@ -35,9 +37,12 @@ RUN buildDeps='curl bzip2 unzip' \
         && echo "$UT2004_DOWNLOAD_SHA1 ut2004.zip" | sha1sum -c - \
         && curl -sSL "$UT2004_PATCH_DOWNLOAD_URL" -o ut2004_patch.tar.bz2 \
         && echo "$UT2004_PATCH_DOWNLOAD_SHA1 ut2004_patch.tar.bz2" | sha1sum -c - \
+        && curl -sSL "$UTCOMP_DOWNLOAD_URL" -o utcomp.zip \
+        && echo "$UTCOMP_DOWNLOAD_SHA1 utcomp.zip" | sha1sum -c - \
         && unzip ut2004.zip -d /usr/src/ut2004 \
+        && unzip utcomp.zip -d /usr/src/ut2004 \
         && tar -xvjf ut2004_patch.tar.bz2 -C /usr/src/ut2004 UT2004-Patch/ --strip-components=1 \
-        && rm ut2004.zip ut2004_patch.tar.bz2 \
+        && rm ut2004.zip ut2004_patch.tar.bz2 utcomp.zip \
         # Fix broken CSS
         # See: http://forums.tripwireinteractive.com/showpost.php?p=585435&postcount=13
         && sed -i 's/none}/none;/g' "/usr/src/ut2004/Web/ServerAdmin/ut2003.css" \
